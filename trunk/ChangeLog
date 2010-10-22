@@ -1,0 +1,72 @@
+2010-10-14 Patrice Caron
+	*Feature #6565: Clean all cookie domain on logout
+
+2010-10-13 Michael Miousse
+	*Feature #10244: add hook for maping field
+	*Bug #10243: priority error with TYPO3 4.4.x
+	*Bug #10259: Default value from TCA
+
+2010-03-19  Xavier Perseguers  <typo3@perseguers.ch>
+
+	* Fixed bug #6918: Mapping field is too small
+
+2010-03-06  Xavier Perseguers  <typo3@perseguers.ch>
+
+	* Removed naming annoyances in EM for modified tables
+
+2010-03-01  Xavier Perseguers  <typo3@perseguers.ch>
+
+	* Added feature #5120: Add hook to postprocess creation of be/fe users and groups
+	* Applied CGL
+	* Added missing SVN properties
+
+2010-01-13  Xavier Perseguers  <typo3@perseguers.ch>
+
+	* Fixed bug #6015: Bad CAS config variable name (thanks to Patrice Caron)
+
+2009-08-27 Xavier Perseguers
+
+	* Feature #4354: Add option to force username as lowercase
+
+2009-06-30 Michael Miousse
+
+	* Bug : modification of the autologout URL for realurl
+
+2009-06-29 Partice Caron 
+
+	* Feature #3775: Lock users to a certain list of ldap group
+	* Feature #3774: Set imported user to Admin (Backend)
+
+2009-06-29 Partice Caron & Michael Miousse 
+
+	* Feature #3773 : Autologin or logout option for the cas plugin 
+	* Replace the ext_typoscript_setup.txt and ext_typoscript_constant.txt by a static folder
+
+2009-06-25 Patrice Caron
+
+	* Feature #3764: Configuration for the service Url for cas
+
+2009-06-25 Michael Miousse
+
+	* Feature #3763: Add a new configuration denying import of users which do not have TYPO3 group
+	
+2009-06-05 Michael Miousse
+	
+	* Feature #3539: Enabeling CAS authentification as a stand alone feature
+
+2009-06-02  Xavier Perseguers
+
+	* Took TCA default configuration into account when creating users
+	* Set a default random password for new users
+
+2009-06-01  Michael Miousse
+
+	* Added feature: possiblility to add uri at the end of an url for the cas server. We can now create url like localhost:8080/cas
+
+2009-02-23  Michael Miousse
+
+	* Fixed bug #2532: Missing dependency of iglib extension
+
+2009-01-29  Michael Miousse
+
+	* Initial Commit
