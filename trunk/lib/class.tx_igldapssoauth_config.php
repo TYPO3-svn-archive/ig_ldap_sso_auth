@@ -68,6 +68,7 @@ class tx_igldapssoauth_config {
 		$this->be['evaluateGroupsFromMembership'] = $EXT_CONFIG['evaluateGroupsFromMembership'];
 		$this->be['IfUserExist'] = $EXT_CONFIG['TYPO3BEUserExist'];
 		$this->be['IfGroupExist'] = 0;
+		$this->be['BEfailsafe'] =  $EXT_CONFIG['BEfailsafe'];		
 		$this->be['DeleteUserIfNoLDAPGroups'] = 0;
 		$this->be['DeleteUserIfNoTYPO3Groups'] = 0;
 		$this->be['GroupsNotSynchronize'] = $EXT_CONFIG['TYPO3BEGroupsNotSynchronize'];
@@ -89,6 +90,7 @@ class tx_igldapssoauth_config {
 		$this->fe['evaluateGroupsFromMembership'] = $EXT_CONFIG['evaluateGroupsFromMembership'];
 		$this->fe['IfUserExist'] = 0;
 		$this->fe['IfGroupExist'] = $EXT_CONFIG['TYPO3FEGroupExist'];
+		$this->fe['BEfailsafe'] = 0;
 		$this->fe['updateAdminAttribForGroups']=0;
 		$this->fe['DeleteUserIfNoTYPO3Groups'] = $EXT_CONFIG['TYPO3FEDeleteUserIfNoTYPO3Groups'];
 		$this->fe['DeleteUserIfNoLDAPGroups'] = $EXT_CONFIG['TYPO3FEDeleteUserIfNoLDAPGroups'];

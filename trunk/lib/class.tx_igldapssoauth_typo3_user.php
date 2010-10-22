@@ -65,8 +65,7 @@ class tx_igldapssoauth_typo3_user {
 			$QUERY = array(
 				'SELECT' => '*',
 				'FROM' => $table,
-				'WHERE' => 'tx_igldapssoauth_dn=' . $GLOBALS['TYPO3_DB']->fullQuoteStr($dn, $table)
-					. ' AND username=' . $GLOBALS['TYPO3_DB']->fullQuoteStr($username, $table)
+				'WHERE' => 'tx_igldapssoauth_dn=' . $GLOBALS['TYPO3_DB']->fullQuoteStr($dn, $table)					
 					. ' AND pid IN (' . $pid . ')',
 				'GROUP_BY' => '',
 				'ORDER_BY' => '',

@@ -49,8 +49,27 @@ class tx_igldapssoauth_auth {
 
 			// Valid user from LDAP server.
 			if ($userdn = tx_igldapssoauth_ldap::valid_user($username, $password, $this->config['users']['basedn'], $this->config['users']['filter'])) {
+				if($userdn === TRUE){
+					return TRUE;
+				}
+				return tx_igldapssoauth_auth::synchroniseUser($userdn,$username);
 
-				// User is valid. Get it from DN.
+			}
+
+			// LDAP authentication failed.
+			tx_igldapssoauth_ldap::disconnect();
+			return false;
+
+		}
+
+		// LDAP authentication failed.
+		tx_igldapssoauth_ldap::disconnect();
+		return false;
+
+	}
+	
+	function synchroniseUser($userdn, $username = null ){
+			// User is valid. Get it from DN.
 				$ldap_user = tx_igldapssoauth_auth::get_ldap_user($userdn);
 
 				// Get user pid from user mapping.
@@ -128,7 +147,8 @@ class tx_igldapssoauth_auth {
 
 				// User not exist in TYPO3.
 				} elseif (!$typo3_user[0]['uid'] && (!empty($typo3_groups) || !tx_igldapssoauth_config::is_enable('DeleteUserIfNoTYPO3Groups'))) {
-					$GLOBALS['TSFE']->includeTCA();
+					tslib_fe::includeTCA();
+									
 					// Insert new user: use TCA configuration to override default values
 					$table = $this->authInfo['db_user']['table'];
 					if(is_array($GLOBALS['TCA'][$table]['columns'])){
@@ -187,21 +207,8 @@ class tx_igldapssoauth_auth {
 				else{
 					$typo3_user=false;
 				}
-				//iglib_debug::print_this($typo3_user, 'TYPO3 USER MERGED');
+				///iglib_debug::print_this($typo3_user, 'TYPO3 USER MERGED');
 				return $typo3_user;
-
-			}
-
-			// LDAP authentication failed.
-			tx_igldapssoauth_ldap::disconnect();
-			return false;
-
-		}
-
-		// LDAP authentication failed.
-		tx_igldapssoauth_ldap::disconnect();
-		return false;
-
 	}
 
 	function cas_auth () {
