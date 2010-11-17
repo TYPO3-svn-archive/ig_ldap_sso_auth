@@ -76,7 +76,7 @@ class tx_igldapssoauth_config {
 	    $this->be['updateAdminAttribForGroups'] = $EXT_CONFIG['updateAdminAttribForGroups'] ? $EXT_CONFIG['updateAdminAttribForGroups'] : 0;
 		$this->be['assignGroups'] = $EXT_CONFIG['assignBEGroups'] ? $EXT_CONFIG['assignBEGroups'] : 0;
 		$this->be['keepTYPO3Groups'] = $EXT_CONFIG['keepBEGroups'];
-		$this->be['users']['basedn'] = $EXT_CONFIG['be_users_basedn'];
+		$this->be['users']['basedn'] = explode('||',$EXT_CONFIG['be_users_basedn']);
 		$this->be['users']['filter'] = $EXT_CONFIG['be_users_filter'];
 		$this->be['users']['mapping'] = tx_igldapssoauth_config::make_user_mapping($EXT_CONFIG['be_users_mapping'], $EXT_CONFIG['be_users_filter']);
 		$this->be['groups']['basedn'] = $EXT_CONFIG['be_groups_basedn'];
@@ -98,7 +98,7 @@ class tx_igldapssoauth_config {
 		$this->fe['assignGroups'] = $EXT_CONFIG['assignFEGroups'] ? $EXT_CONFIG['assignFEGroups'] : 0;
 		$this->fe['keepTYPO3Groups'] = $EXT_CONFIG['keepFEGroups'];
 		$this->fe['requiredLDAPGroups'] = $EXT_CONFIG['requiredLDAPFEGroups'] ? $EXT_CONFIG['requiredLDAPFEGroups'] : 0;
-		$this->fe['users']['basedn'] = $EXT_CONFIG['fe_users_basedn'];
+		$this->fe['users']['basedn'] = explode('||',$EXT_CONFIG['fe_users_basedn']);
 		$this->fe['users']['filter'] = $EXT_CONFIG['fe_users_filter'];
 		$this->fe['users']['mapping'] = tx_igldapssoauth_config::make_user_mapping($EXT_CONFIG['fe_users_mapping'], $EXT_CONFIG['fe_users_filter']);
 		$this->fe['groups']['basedn'] = $EXT_CONFIG['fe_groups_basedn'];

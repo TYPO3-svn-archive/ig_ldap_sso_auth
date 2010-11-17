@@ -83,7 +83,6 @@ class tx_igldapssoauth_auth {
 				
 				// Get LDAP groups from LDAP user.
 				$ldap_groups = tx_igldapssoauth_auth::get_ldap_groups($ldap_user);
-
 				if ($ldap_groups) {
 
 					// Get pid from group mapping.
@@ -97,9 +96,24 @@ class tx_igldapssoauth_auth {
 						return false;
 
 					}
-
 					unset($typo3_groups_tmp['count']);
 
+					if ($requiredLDAPGroups = tx_igldapssoauth_config::is_enable('requiredLDAPGroups')) {
+						$requiredLDAPGroups = t3lib_div::trimExplode(',', $requiredLDAPGroups);
+						$required = FALSE;
+						$group_Listuid = array();
+						foreach ($typo3_groups_tmp as $typo3_group) {
+							$group_Listuid[] = $typo3_group['uid'];
+						}
+						foreach ($requiredLDAPGroups as $uid) {
+							if (in_array($uid, $group_Listuid)) {
+								$required = TRUE;
+							}
+						}
+						if(!$required){
+							return false;
+						}
+					}
 					$i = 0;
 					foreach ($typo3_groups_tmp as $typo3_group) {
 
@@ -140,6 +154,11 @@ class tx_igldapssoauth_auth {
 					}
 
 				}
+				else{
+						if ($requiredLDAPGroups = tx_igldapssoauth_config::is_enable('requiredLDAPGroups')) {
+							return false;
+						}
+				}
 
 				if (tx_igldapssoauth_config::is_enable('IfUserExist') && !$typo3_user[0]['uid']) {
 
@@ -147,7 +166,10 @@ class tx_igldapssoauth_auth {
 
 				// User not exist in TYPO3.
 				} elseif (!$typo3_user[0]['uid'] && (!empty($typo3_groups) || !tx_igldapssoauth_config::is_enable('DeleteUserIfNoTYPO3Groups'))) {
-					tslib_fe::includeTCA();
+					include_once(PATH_tslib.'class.tslib_fe.php');
+					if(empty($GLOBALS['TCA'])) {
+						tslib_fe::includeTCA();
+					}
 									
 					// Insert new user: use TCA configuration to override default values
 					$table = $this->authInfo['db_user']['table'];
@@ -272,7 +294,6 @@ class tx_igldapssoauth_auth {
 
 		// Get groups attributes from group mapping configuration.
 		$ldap_group_attributes = tx_igldapssoauth_config::get_ldap_attributes($this->config['groups']['mapping']);
-
 		$ldap_groups = array('count' => 0);
 
 		// Get LDAP groups from membership attribute.
@@ -325,7 +346,6 @@ class tx_igldapssoauth_auth {
 		foreach ($ldap_groups as $ldap_group) {
 
 			$typo3_group_title = tx_igldapssoauth_typo3_group::get_title($ldap_group, $mapping);
-
 			if ($typo3_group = tx_igldapssoauth_typo3_group::select($table, 0, $pid, $typo3_group_title, $ldap_group['dn'])) {
 
 				$typo3_groups[] = $typo3_group[0];

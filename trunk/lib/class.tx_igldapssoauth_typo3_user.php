@@ -178,15 +178,7 @@ class tx_igldapssoauth_typo3_user {
 			}
 		}
 		
-	 	if ($requiredLDAPGroups = tx_igldapssoauth_config::is_enable('requiredLDAPGroups')) {
-			$requiredLDAPGroups = t3lib_div::trimExplode(',', $requiredLDAPGroups);
-			$required = FALSE;
-			foreach ($requiredLDAPGroups as $uid) {
-				if (in_array($uid, $group_uid)) {
-					$required = TRUE;
-				}
-			}
-		}
+
 
 		if ($updateAdminAttribForGroups = tx_igldapssoauth_config::is_enable('updateAdminAttribForGroups')) {
 			$updateAdminAttribForGroups = t3lib_div::trimExplode(',', $updateAdminAttribForGroups);
