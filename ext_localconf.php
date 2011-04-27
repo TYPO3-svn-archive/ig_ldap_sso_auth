@@ -32,8 +32,6 @@ if($EXT_CONFIG['enableFELDAPAuthentication']){
 if($EXT_CONFIG['enableBELDAPAuthentication']){
 	$subTypesArr[] = 'getUserBE';
 	$subTypesArr[] = 'authUserBE';
-	$TYPO3_CONF_VARS['BE']['loginSecurityLevelOld'] = $TYPO3_CONF_VARS['BE']['loginSecurityLevel'];
-	$TYPO3_CONF_VARS['BE']['loginSecurityLevel'] = 'normal';
 }
 if($EXT_CONFIG['enableFECASAuthentication']){
 	$subTypesArr[] = 'getUserFE';
