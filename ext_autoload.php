@@ -12,8 +12,8 @@ return array(
 	'tx_igldapssoauth_ldap'	=>	$extensionPath . 'lib/class.tx_igldapssoauth_ldap.php',
 	'tx_igldapssoauth_typo3_group'	=>	$extensionPath . 'lib/class.tx_igldapssoauth_typo3_group.php',
 	'tx_igldapssoauth_typo3_user'	=>	$extensionPath . 'lib/class.tx_igldapssoauth_typo3_user.php',
-	'tx_igldapssoauth_utiliy_db'	=>	$extensionPath . 'Classes/Utility/Db.php',
-	'tx_igldapssoauth_utiliy_debug'	=>	$extensionPath . 'Classes/Utility/Debug.php',
-	'tx_igldapssoauth_utiliy_ldap'	=>	$extensionPath . 'Classes/Utility/Ldap.php',
+	'tx_igldapssoauth_utility_db'	=>	$extensionPath . 'classes/utility/class.tx_igldapssoauth_utility_db.php',
+	'tx_igldapssoauth_utility_debug'	=>	$extensionPath . 'classes/utility/class.tx_igldapssoauth_utility_debug.php',
+	'tx_igldapssoauth_utility_ldap'	=>	$extensionPath . 'classes/utility/class.tx_igldapssoauth_utility_ldap.php',
 );
 ?>

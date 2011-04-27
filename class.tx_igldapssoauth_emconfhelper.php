@@ -36,7 +36,7 @@ if (!defined('TYPO3_MODE'))
  *
  * @since	2009-09-04
  * @package	TYPO3
- * @subpackage	tx_saltedpasswords
+ * @subpackage	ig_ldap_sso_auth
  */
 class tx_igldapssoauth_emconfhelper {
 
@@ -148,7 +148,7 @@ EOT;
 		// Configuration of authentication service.
 		$loginSecurityLevel = $GLOBALS['TYPO3_CONF_VARS']['BE']['loginSecurityLevel'];
 
-		if ($loginSecurityLevel == 'challenged' || $loginSecurityLevel == 'superchallenged') {
+		if ($loginSecurityLevel == 'challenged' || $loginSecurityLevel == 'superchallenged' || $loginSecurityLevel == '' ) {
 			$this->setErrorLevel('error');
 			$problems[] = <<< EOT
 LDAPauthentification is not compatible with loginSecurityLevel set to "challenged" or "superchallenged" since the real password can never be sent against the LDAP repository. 

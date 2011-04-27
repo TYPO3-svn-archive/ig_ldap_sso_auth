@@ -23,7 +23,7 @@
  * ************************************************************* */
 
 /**
- * Class Tx_IgLdapSsoAuth_Utiliy_Debug.
+ * Class tx_igldapssoauth_utility_Debug.
  *
  * Debug TYPO3 variables.
  *
@@ -32,7 +32,7 @@
  * @subpackage iglib
  * @author       Michael Gagnon <mgagnon@infoglobe.ca>
  * @copyright Copyright (c) Infoglobe 2007
- * @version $Id: Tx_IgLdapSsoAuth_Utiliy_Debug
+ * @version $Id: tx_igldapssoauth_utility_Debug
  *
  * $BE_USER
  * $LANG
@@ -42,7 +42,7 @@
  * $CLIENT
  * $TYPO3_CONF_VARS
  */
-class Tx_IgLdapSsoAuth_Utiliy_Debug {
+class tx_igldapssoauth_utility_Debug {
 
 	function print_this($value = null, $comment = null, $var_dump = false) {
 
@@ -72,38 +72,38 @@ class Tx_IgLdapSsoAuth_Utiliy_Debug {
 
 	function session($comment = null) {
 
-		Tx_IgLdapSsoAuth_Utiliy_Debug::print_this($_SESSION, $comment ? $comment : 'SESSION');
+		tx_igldapssoauth_utility_Debug::print_this($_SESSION, $comment ? $comment : 'SESSION');
 	}
 
 	function post($comment = null) {
 
-		Tx_IgLdapSsoAuth_Utiliy_Debug::print_this($_POST, $comment ? $comment : 'POST');
+		tx_igldapssoauth_utility_Debug::print_this($_POST, $comment ? $comment : 'POST');
 	}
 
 	function get($comment = null) {
 
-		Tx_IgLdapSsoAuth_Utiliy_Debug::print_this($_GET, $comment ? $comment : 'GET');
+		tx_igldapssoauth_utility_Debug::print_this($_GET, $comment ? $comment : 'GET');
 	}
 
 	function be_user($comment = null) {
 
 		global $BE_USER;
 
-		Tx_IgLdapSsoAuth_Utiliy_Debug::print_this($BE_USER, $comment ? $comment : 'BE_USER');
+		tx_igldapssoauth_utility_Debug::print_this($BE_USER, $comment ? $comment : 'BE_USER');
 	}
 
 	function lang($comment = null) {
 
 		global $LANG;
 
-		Tx_IgLdapSsoAuth_Utiliy_Debug::print_this($LANG, $comment ? $comment : 'LANG');
+		tx_igldapssoauth_utility_Debug::print_this($LANG, $comment ? $comment : 'LANG');
 	}
 
 	function tca($comment = null) {
 
 		global $TCA;
 
-		Tx_IgLdapSsoAuth_Utiliy_Debug::print_this($TCA, $comment ? $comment : 'TCA');
+		tx_igldapssoauth_utility_Debug::print_this($TCA, $comment ? $comment : 'TCA');
 	}
 
 }

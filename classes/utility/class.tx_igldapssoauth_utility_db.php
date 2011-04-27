@@ -27,7 +27,7 @@
  * ************************************************************* */
 
 /**
- * Class Tx_IgLdapSsoAuth_Utiliy_Db.
+ * Class tx_igldapssoauth_utility_Db.
  *
  * Manage query. This class use API TYPO3 DBAL.
  *
@@ -36,10 +36,10 @@
  * @subpackage	iglib
  * @author	Michael Gagnon <mgagnon@infoglobe.ca>
  * @copyright	(c) 2007 Michael Gagnon <mgagnon@infoglobe.ca>
- * @version	$Id: class.iglib_db.php
- * @see class.t3lib_db.php
+ * @version	$Id: class.tx_igldapssoauth_utility_db.php
+ * @see class.tx_igldapssoauth_utility_db.php
  */
-class Tx_IgLdapSsoAuth_Utiliy_Db {
+class tx_igldapssoauth_utility_Db {
 
 	/**
 	 * Execute insert query.

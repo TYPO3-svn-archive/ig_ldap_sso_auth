@@ -290,8 +290,6 @@ class  tx_igldapssoauth_module1 extends t3lib_SCbase {
 
 	function wizard_search ($search = array()) {
 
-//		Tx_IgLdapSsoAuth_Utiliy_Debug::print_this($search['attributes'], 'TYPO3 USER MERGED');
-
 		switch ($search['action']) {
 
 			case 'select' :
@@ -436,7 +434,6 @@ class  tx_igldapssoauth_module1 extends t3lib_SCbase {
 
 					foreach ($ldap_groups as $index => $ldap_group) {
 					$typo3_group = tx_igldapssoauth_auth::merge($ldap_group, $typo3_groups[$index], $this->config[$typo3_mode]['groups']['mapping']);
-						//Tx_IgLdapSsoAuth_Utiliy_Debug::print_this($typo3_group);
 						if (isset($import_groups[$typo3_mode]) && in_array($typo3_group['tx_igldapssoauth_dn'], $import_groups[$typo3_mode])) {
 							unset($typo3_group['parentGroup']);
 							$typo3_group = tx_igldapssoauth_typo3_group::insert($typo3_mode.'_groups', $typo3_group);
@@ -452,11 +449,6 @@ class  tx_igldapssoauth_module1 extends t3lib_SCbase {
 									$this->setParentGroup($ldap_group[$fieldParent],$fieldParent,$typo3_group['uid'],$typo3_group_pid,$typo3_mode);
 								}
 							}
-
-
-							//Tx_IgLdapSsoAuth_Utiliy_Debug::print_this($typo3_group, 'INSERTED');
-
-
 						}
 
 						$this->content[] = '<tr>' .

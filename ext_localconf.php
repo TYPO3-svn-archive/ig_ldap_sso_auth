@@ -3,7 +3,7 @@
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 // iglib class require
-require_once(t3lib_extMgm::extPath($_EXTKEY) . 'Framework/CAS/CAS.php');
+require_once(t3lib_extMgm::extPath($_EXTKEY) . 'framework/CAS/CAS.php');
 
 // Configuration of authentication service.
 $EXT_CONFIG = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['ig_ldap_sso_auth']);

@@ -24,14 +24,14 @@
 ***************************************************************/
 
 /**
- * Class Tx_IgLdapSsoAuth_Utiliy_Ldap.
+ * Class tx_igldapssoauth_utility_Ldap.
  *
  * @access public
  * @package	TYPO3
  * @subpackage	iglib
  * @author	Michael Gagnon <mgagnon@infoglobe.ca>
  * @copyright	(c) 2007 Michael Gagnon <mgagnon@infoglobe.ca>
- * @version	$Id: class.iglib_ldap.php
+ * @version	$Id: class.tx_igldapssoauth_utility_ldap.php
  * @see http://www-sop.inria.fr/semir/personnel/Laurent.Mirtain/ldap-livre.html
  *
  * Opération  |	LDAP description
@@ -49,7 +49,7 @@
  * Extended 	Opérations étendues (v3)
  *
  */
-class Tx_IgLdapSsoAuth_Utiliy_Ldap {
+class tx_igldapssoauth_utility_Ldap {
 
 	var $ldap_charset; // LDAP Server charset.
 	var $local_charset; // Local character set (TYPO3).
@@ -94,7 +94,7 @@ class Tx_IgLdapSsoAuth_Utiliy_Ldap {
 
 		// Set configuration.
 
-		Tx_IgLdapSsoAuth_Utiliy_Ldap::init_charset($charset);
+		tx_igldapssoauth_utility_Ldap::init_charset($charset);
 
 		@ldap_set_option($this->cid, LDAP_OPT_PROTOCOL_VERSION, $protocol);
 
@@ -183,7 +183,7 @@ class Tx_IgLdapSsoAuth_Utiliy_Ldap {
 
 			}
 
-			$result = Tx_IgLdapSsoAuth_Utiliy_Ldap::get_entries();
+			$result = tx_igldapssoauth_utility_Ldap::get_entries();
 			if ($result['count'] == 0) {
 
 				// Search failed.
@@ -235,7 +235,7 @@ class Tx_IgLdapSsoAuth_Utiliy_Ldap {
 
 			$this->status['get_entries']['status'] = ldap_error($this->cid);
 			// Convert LDAP result character set  -> local character set
-			return(Tx_IgLdapSsoAuth_Utiliy_Ldap::convert_charset_array($result, $this->ldap_charset, $this->local_charset));
+			return(tx_igldapssoauth_utility_Ldap::convert_charset_array($result, $this->ldap_charset, $this->local_charset));
 
 		}
 
@@ -247,7 +247,7 @@ class Tx_IgLdapSsoAuth_Utiliy_Ldap {
 	function get_first_entry () {
 
 		$this->status['get_first_entry']['status'] = ldap_error($this->cid);
-		return(Tx_IgLdapSsoAuth_Utiliy_Ldap::convert_charset_array(@ldap_get_attributes($this->cid, $this->feid), $this->ldap_charset, $this->local_charset));
+		return(tx_igldapssoauth_utility_Ldap::convert_charset_array(@ldap_get_attributes($this->cid, $this->feid), $this->ldap_charset, $this->local_charset));
 
 	}
 
@@ -339,7 +339,7 @@ class Tx_IgLdapSsoAuth_Utiliy_Ldap {
 
 			if (is_array($val)) {
 
-				$arr[$k] = Tx_IgLdapSsoAuth_Utiliy_Ldap::convert_charset_array($val, $char1, $char2);
+				$arr[$k] = tx_igldapssoauth_utility_Ldap::convert_charset_array($val, $char1, $char2);
 
 			} else {
 
