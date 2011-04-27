@@ -120,6 +120,8 @@ class tx_igldapssoauth_sv1 extends tx_sv_auth {
 	 */
 	function authUser($user) {
 
+		// 100 -> login failed
+		// 200 -> login success
 		$OK = 100;
 
 		if (($this->login['uident'] && $this->login['uname']) || (tx_igldapssoauth_config::is_enable('CASAuthentication') && $user)) {
@@ -162,6 +164,11 @@ class tx_igldapssoauth_sv1 extends tx_sv_auth {
 				}
 				$OK = false;
 			}
+		}
+
+		// Make sure $OK returns the right value which must either 100 (login KO) or 200 (login OK)
+		if ($OK === FALSE) {
+			$OK = 100;
 		}
 		return $OK;
 	}
